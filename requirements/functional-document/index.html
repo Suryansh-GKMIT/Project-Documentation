@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+
+<html data-bs-theme="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="../../img/favicon.ico" rel="shortcut icon"/>
+<title>Functional Specification - SkillCheck Documentation</title>
+<link href="../../css/bootstrap.min.css" rel="stylesheet"/>
+<link href="../../css/fontawesome.min.css" rel="stylesheet"/>
+<link href="../../css/brands.min.css" rel="stylesheet"/>
+<link href="../../css/solid.min.css" rel="stylesheet"/>
+<link href="../../css/v4-font-face.min.css" rel="stylesheet"/>
+<link href="../../css/base.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" id="hljs-light" rel="stylesheet"/>
+<link disabled="" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" id="hljs-dark" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</head>
+<body>
+<div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+<div class="container">
+<a class="navbar-brand" href="../..">SkillCheck Documentation</a>
+<!-- Expander button -->
+<button aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbar-collapse" data-bs-toggle="collapse" type="button">
+<span class="navbar-toggler-icon"></span>
+</button>
+<!-- Expanded navigation -->
+<div class="navbar-collapse collapse" id="navbar-collapse">
+<!-- Main navigation -->
+<ul class="nav navbar-nav">
+<li class="nav-item">
+<a class="nav-link" href="../..">Home</a>
+</li>
+<li class="nav-item dropdown">
+<a aria-current="page" aria-expanded="false" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button">Requirements</a>
+<ul class="dropdown-menu">
+<li>
+<a class="dropdown-item" href="../use-case-document/">Use Case Document</a>
+</li>
+<li>
+<a aria-current="page" class="dropdown-item active" href="./">Functional Specification</a>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="nav navbar-nav ms-md-auto">
+<li class="nav-item">
+<a class="nav-link" href="../use-case-document/" rel="prev">
+<i class="fa fa-arrow-left"></i> Previous
+                                </a>
+</li>
+<li class="nav-item">
+<a class="nav-link disabled" rel="next">
+                                    Next <i class="fa fa-arrow-right"></i>
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="container">
+<div class="row">
+<div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+<div class="navbar-header">
+<button class="navbar-toggler collapsed" data-bs-target="#toc-collapse" data-bs-toggle="collapse" title="Table of Contents" type="button">
+<span class="fa fa-angle-down"></span>
+</button>
+</div>
+<div class="navbar-collapse collapse card bg-body-tertiary" id="toc-collapse">
+<ul class="nav flex-column">
+<li class="nav-item" data-bs-level="1"><a class="nav-link" href="#functional-specification-document">Functional Specification Document</a>
+<ul class="nav flex-column">
+<li class="nav-item" data-bs-level="2"><a class="nav-link" href="#1-system-overview">1. System Overview</a>
+<ul class="nav flex-column">
+</ul>
+</li>
+<li class="nav-item" data-bs-level="2"><a class="nav-link" href="#2-roles-and-permissions">2. Roles and Permissions</a>
+<ul class="nav flex-column">
+</ul>
+</li>
+<li class="nav-item" data-bs-level="2"><a class="nav-link" href="#3-functional-requirements">3. Functional Requirements</a>
+<ul class="nav flex-column">
+</ul>
+</li>
+<li class="nav-item" data-bs-level="2"><a class="nav-link" href="#4-non-functional-requirements">4. Non-Functional Requirements</a>
+<ul class="nav flex-column">
+</ul>
+</li>
+<li class="nav-item" data-bs-level="2"><a class="nav-link" href="#5-data-model-overview">5. Data Model Overview</a>
+<ul class="nav flex-column">
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div></div>
+<div class="col-md-9" role="main">
+<h1 id="functional-specification-document">Functional Specification Document</h1>
+<p><strong>Project:</strong> SkillCheck – Enclosed Access Online Test Platform (MVP)</p>
+<hr/>
+<h2 id="1-system-overview">1. System Overview</h2>
+<div class="mermaid">flowchart LR
+    A[Admin] --&gt;|Manages Users &amp; Permissions| B(System Server)
+    C[Test Creator] --&gt;|Creates Tests / Assigns Users| B
+    D[Test Taker] --&gt;|Attempts Assigned Tests| B
+
+    B --&gt;|Stores Data| E[(PostgreSQL Database)]
+    B --&gt;|Serves UI| F[React Frontend , PWA]
+
+    subgraph Enclosed Environment
+        A
+        C
+        D
+        B
+        E
+        F
+    end
+
+</div>
+<p><strong>Frontend:</strong> React + PWA <br/>
+<strong>Backend:</strong> Node.js + Express <br/>
+<strong>Database:</strong> PostgreSQL  <br/>
+<strong>Authentication:</strong> JWT-based authentication for Admin and Test Creators; password-based login for Test Takers  <br/>
+<strong>Deployment:</strong> Public cloud environment <br/>
+<strong>Access Model:</strong> No public sign-up; all users managed by Admin<br/></p>
+<hr/>
+<h2 id="2-roles-and-permissions">2. Roles and Permissions</h2>
+<h3 id="21-admin">2.1 Admin</h3>
+<ul>
+<li>Create users  </li>
+<li>Edit or deactivate users  </li>
+<li>Grant or revoke Test Creator permissions  </li>
+<li>View all tests and results</li>
+</ul>
+<h3 id="22-test-creator">2.2 Test Creator</h3>
+<ul>
+<li>Create, edit, and delete tests  </li>
+<li>Add and manage test questions  </li>
+<li>Assign users to take tests  </li>
+<li>Publish tests to Active state  </li>
+<li>View results of their tests</li>
+</ul>
+<h3 id="23-test-taker">2.3 Test Taker</h3>
+<ul>
+<li>Log in securely  </li>
+<li>View only assigned tests  </li>
+<li>Attempt tests once (unless reset)  </li>
+<li>Submit responses before time expires</li>
+</ul>
+<hr/>
+<h2 id="3-functional-requirements">3. Functional Requirements</h2>
+<h3 id="fr1-authentication-and-authorization-uc1-uc2"><strong>FR1 – Authentication and Authorization (UC1, UC2)</strong></h3>
+<p><strong>Description:</strong><br>
+Admin, Creator, and Test Taker must log in securely to access system features.  </br></p>
+<p><strong>Functional Steps:</strong><br/>
+1. Admin and Creator log in using email and password.<br>
+2. Test Taker logs in with assigned credentials.<br>
+3. System issues JWT tokens for Admins and Creators.<br>
+4. Role-based access ensures proper permission levels.  </br></br></br></p>
+<p><strong>Acceptance Criteria:</strong> Unauthorized access redirects to an “Access Denied” message.</p>
+<hr/>
+<h3 id="fr2-user-management-uc1-manage-users"><strong>FR2 – User Management (UC1 – Manage Users)</strong></h3>
+<p><strong>Description:</strong><br>
+Admins manage all user accounts and roles.  </br></p>
+<p><strong>Functional Steps:</strong><br/>
+1. Admin can create new users.<br>
+2. Admin can edit or deactivate existing users.<br>
+3. Admin can assign or revoke roles.<br>
+4. Inactive users cannot log in.  </br></br></br></p>
+<p><strong>Acceptance Criteria:</strong> All changes should reflect instantly across the platform.</p>
+<hr/>
+<h3 id="fr3-grant-creator-access-uc2-grant-creator-access"><strong>FR3 – Grant Creator Access (UC2 – Grant Creator Access)</strong></h3>
+<p><strong>Description:</strong><br/>
+Admin can promote or revoke user access to “Test Creator.”  </p>
+<p><strong>Functional Steps:</strong><br/>
+1. Admin selects user from the list.<br>
+2. Grants or removes “Creator” role.<br/>
+3. Saves updates to the user profile.  </br></p>
+<p><strong>Acceptance Criteria:</strong> Role updates become active on next login session.</p>
+<hr/>
+<h3 id="fr4-test-creation-uc3-create-test"><strong>FR4 – Test Creation (UC3 – Create Test)</strong></h3>
+<p><strong>Description:</strong><br/>
+Creators can design and define test properties.  </p>
+<p><strong>Functional Steps:</strong><br/>
+1. Creator clicks “Create Test.”<br>
+2. Fills title, duration, and description.<br/>
+3. Saves test in Draft state.  </br></p>
+<p><strong>Acceptance Criteria:</strong><br/>
+A test cannot be saved without a valid title and duration.</p>
+<hr/>
+<h3 id="fr5-question-management-uc4-add-edit-questions"><strong>FR5 – Question Management (UC4 – Add / Edit Questions)</strong></h3>
+<p><strong>Description:</strong><br/>
+Creators manage test questions before publishing.  </p>
+<p><strong>Functional Steps:</strong><br/>
+1. Add new questions to a test.<br>
+2. Each question includes text, 2–4 options, and a correct answer.<br/>
+3. Modify or delete questions for Draft tests.<br/>
+4. Save changes to the database.  </br></p>
+<p><strong>Acceptance Criteria:</strong><br/>
+A test cannot be published without at least one valid question.</p>
+<hr/>
+<h3 id="fr6-assign-users-to-tests-uc5-assign-test-takers"><strong>FR6 – Assign Users to Tests (UC5 – Assign Test Takers)</strong></h3>
+<p><strong>Description:</strong><br/>
+Creators assign registered users to their tests.  </p>
+<p><strong>Functional Steps:</strong><br/>
+1. Creator opens “Assign Users.”<br>
+2. Selects users from list.<br/>
+3. Confirms and saves assignment.  </br></p>
+<p><strong>Acceptance Criteria:</strong><br/>
+Assigned users should see the test in their dashboard immediately after activation.</p>
+<hr/>
+<h3 id="fr7-publish-test-uc6-publish-test"><strong>FR7 – Publish Test (UC6 – Publish Test)</strong></h3>
+<p><strong>Description:</strong><br/>
+Creators publish tests after adding questions and assigning users.  </p>
+<p><strong>Functional Steps:</strong><br/>
+1. Creator selects a Draft test.<br>
+2. Clicks “Publish.”<br/>
+3. System validates structure and updates test status to Active.  </br></p>
+<p><strong>Acceptance Criteria:</strong><br/>
+Test becomes visible only to assigned Test Takers.</p>
+<hr/>
+<h3 id="fr8-attempt-test-uc9-uc10-view-attempt-test"><strong>FR8 – Attempt Test (UC9, UC10 – View / Attempt Test)</strong></h3>
+<p><strong>Description:</strong><br/>
+Test Takers can start, attempt, and submit assigned tests.  </p>
+<p><strong>Functional Steps:</strong><br/>
+1. Test Taker views assigned active tests.<br>
+2. Clicks “Start Test.”<br/>
+3. Timer begins.<br/>
+4. System auto-saves progress as user answers questions.<br/>
+5. Only one attempt allowed unless reset by Creator.  </br></p>
+<p><strong>Acceptance Criteria:</strong><br/>
+Timer persists through refresh; users cannot restart a completed test.</p>
+<hr/>
+<h3 id="fr9-submit-test-uc11-submit-test"><strong>FR9 – Submit Test (UC11 – Submit Test)</strong></h3>
+<p><strong>Description:</strong><br/>
+System handles test submission and scoring logic.  </p>
+<p><strong>Functional Steps:</strong><br/>
+1. User clicks “Submit” or system auto-submits when timer expires.<br>
+2. Server validates and saves answers.<br/>
+3. System calculates and stores score in Attempts table.  </br></p>
+<p><strong>Acceptance Criteria:</strong><br/>
+Submission status must update to “Completed” without duplication.</p>
+<hr/>
+<h3 id="fr10-view-results-uc7-view-results-by-test"><strong>FR10 – View Results (UC7 – View Results by Test)</strong></h3>
+<p><strong>Description:</strong><br/>
+Creators can review test-level performance and export results.  </p>
+<p><strong>Functional Steps:</strong><br/>
+1. Creator opens “Results.”<br>
+2. Selects test and views all user attempts.<br/>
+3. Exports results in CSV format.  </br></p>
+<p><strong>Acceptance Criteria:</strong><br/>
+Only completed attempts appear; exports must contain accurate data.</p>
+<hr/>
+<h3 id="fr11-view-results-by-user-uc12-admin-creator"><strong>FR11 – View Results by User (UC12 – Admin / Creator)</strong></h3>
+<p><strong>Description:</strong><br/>
+Admin or Creator can view all tests attempted by a specific user.  </p>
+<p><strong>Functional Steps:</strong><br/>
+1. Search for user in “Results by User.”<br>
+2. System lists each test and score.<br/>
+3. Shows attempt timestamps and outcomes.  </br></p>
+<p><strong>Acceptance Criteria:</strong><br/>
+All completed attempts should appear in the user’s record.</p>
+<hr/>
+<h3 id="fr12-admin-dashboard-uc8-system-overview"><strong>FR12 – Admin Dashboard (UC8 – System Overview)</strong></h3>
+<p><strong>Description:</strong><br/>
+Admins monitor overall system performance and statistics.  </p>
+<p><strong>Functional Steps:</strong><br/>
+1. Admin opens Dashboard.<br>
+2. System displays metrics like total users, tests, and attempts.<br/>
+3. Admin views analytics and performance trends.  </br></p>
+<p><strong>Acceptance Criteria:</strong><br/>
+Dashboard refreshes dynamically and hides sensitive data.</p>
+<hr/>
+<h3 id="fr13-view-own-results-uc13-test-taker"><strong>FR13 – View Own Results (UC13 – Test Taker)</strong></h3>
+<p><strong>Description:</strong><br/>
+Test Takers can review their completed test results (Web or Mobile).  </p>
+<p><strong>Functional Steps:</strong><br/>
+1. Test Taker logs in.<br>
+2. Opens “My Results.”<br/>
+3. System fetches previous attempts and scores.<br/>
+4. Mobile version is read-only.  </br></p>
+<p><strong>Acceptance Criteria:</strong><br/>
+Only logged-in user’s results should be visible.</p>
+<hr/>
+<h2 id="4-non-functional-requirements">4. Non-Functional Requirements</h2>
+<ol>
+<li>Security: Password hashing, JWT, HTTPS, and access control.  </li>
+<li>Performance: Support for multiple simultaneous Test Takers.  </li>
+<li>Reliability: Auto-save to prevent data loss.  </li>
+<li>Usability: Simple dashboards for each role.  </li>
+<li>Data integrity: Responses and scores stored consistently.  </li>
+<li>Extensibility: Future proctoring features must integrate without major redesign.</li>
+</ol>
+<hr/>
+<h2 id="5-data-model-overview">5. Data Model Overview</h2>
+<h3 id="users">Users</h3>
+<ul>
+<li>id  </li>
+<li>name  </li>
+<li>email  </li>
+<li>password_hash  </li>
+<li>role (admin, creator, taker)  </li>
+<li>is_active  </li>
+</ul>
+<h3 id="tests">Tests</h3>
+<ul>
+<li>id  </li>
+<li>title  </li>
+<li>description  </li>
+<li>duration_minutes  </li>
+<li>status (draft, active, closed)  </li>
+<li>created_by  </li>
+</ul>
+<h3 id="questions">Questions</h3>
+<ul>
+<li>id  </li>
+<li>test_id  </li>
+<li>question_text  </li>
+<li>options (JSON array)  </li>
+<li>correct_option_id  </li>
+</ul>
+<h3 id="test-assignments">Test Assignments</h3>
+<ul>
+<li>id  </li>
+<li>test_id  </li>
+<li>user_id  </li>
+</ul>
+<h3 id="attempts">Attempts</h3>
+<ul>
+<li>id  </li>
+<li>test_id  </li>
+<li>user_id  </li>
+<li>started_at  </li>
+<li>ended_at  </li>
+<li>responses (JSON)  </li>
+<li>score  </li>
+</ul></div>
+</div>
+</div>
+<footer class="col-md-12">
+<hr/>
+<p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+</footer>
+<script src="../../js/bootstrap.bundle.min.js"></script>
+<script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+<script src="../../js/base.js"></script>
+<div aria-hidden="true" aria-labelledby="keyboardModalLabel" class="modal" id="mkdocs_keyboard_modal" role="dialog" tabindex="-1">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+<button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+</div>
+<div class="modal-body">
+<table class="table">
+<thead>
+<tr>
+<th style="width: 20%;">Keys</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="help shortcut"><kbd>?</kbd></td>
+<td>Open this help</td>
+</tr>
+<tr>
+<td class="next shortcut"><kbd>n</kbd></td>
+<td>Next page</td>
+</tr>
+<tr>
+<td class="prev shortcut"><kbd>p</kbd></td>
+<td>Previous page</td>
+</tr>
+<tr>
+<td class="search shortcut"><kbd>s</kbd></td>
+<td>Search</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="modal-footer">
+</div>
+</div>
+</div>
+</div>
+<script type="module">import mermaid from "https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs";
+mermaid.initialize({});</script></body>
+</html>

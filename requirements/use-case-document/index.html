@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+
+<html data-bs-theme="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="../../img/favicon.ico" rel="shortcut icon"/>
+<title>Use Case Document - SkillCheck Documentation</title>
+<link href="../../css/bootstrap.min.css" rel="stylesheet"/>
+<link href="../../css/fontawesome.min.css" rel="stylesheet"/>
+<link href="../../css/brands.min.css" rel="stylesheet"/>
+<link href="../../css/solid.min.css" rel="stylesheet"/>
+<link href="../../css/v4-font-face.min.css" rel="stylesheet"/>
+<link href="../../css/base.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" id="hljs-light" rel="stylesheet"/>
+<link disabled="" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" id="hljs-dark" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</head>
+<body>
+<div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+<div class="container">
+<a class="navbar-brand" href="../..">SkillCheck Documentation</a>
+<!-- Expander button -->
+<button aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbar-collapse" data-bs-toggle="collapse" type="button">
+<span class="navbar-toggler-icon"></span>
+</button>
+<!-- Expanded navigation -->
+<div class="navbar-collapse collapse" id="navbar-collapse">
+<!-- Main navigation -->
+<ul class="nav navbar-nav">
+<li class="nav-item">
+<a class="nav-link" href="../..">Home</a>
+</li>
+<li class="nav-item dropdown">
+<a aria-current="page" aria-expanded="false" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button">Requirements</a>
+<ul class="dropdown-menu">
+<li>
+<a aria-current="page" class="dropdown-item active" href="./">Use Case Document</a>
+</li>
+<li>
+<a class="dropdown-item" href="../functional-document/">Functional Specification</a>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="nav navbar-nav ms-md-auto">
+<li class="nav-item">
+<a class="nav-link" href="../.." rel="prev">
+<i class="fa fa-arrow-left"></i> Previous
+                                </a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="../functional-document/" rel="next">
+                                    Next <i class="fa fa-arrow-right"></i>
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="container">
+<div class="row">
+<div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+<div class="navbar-header">
+<button class="navbar-toggler collapsed" data-bs-target="#toc-collapse" data-bs-toggle="collapse" title="Table of Contents" type="button">
+<span class="fa fa-angle-down"></span>
+</button>
+</div>
+<div class="navbar-collapse collapse card bg-body-tertiary" id="toc-collapse">
+<ul class="nav flex-column">
+<li class="nav-item" data-bs-level="1"><a class="nav-link" href="#use-case-document">Use Case Document</a>
+<ul class="nav flex-column">
+<li class="nav-item" data-bs-level="2"><a class="nav-link" href="#1-business-overview">1. Business Overview</a>
+<ul class="nav flex-column">
+</ul>
+</li>
+<li class="nav-item" data-bs-level="2"><a class="nav-link" href="#2-actors-roles">2. Actors / Roles</a>
+<ul class="nav flex-column">
+</ul>
+</li>
+<li class="nav-item" data-bs-level="2"><a class="nav-link" href="#3-preconditions">3. Preconditions</a>
+<ul class="nav flex-column">
+</ul>
+</li>
+<li class="nav-item" data-bs-level="2"><a class="nav-link" href="#4-use-cases">4. Use Cases</a>
+<ul class="nav flex-column">
+</ul>
+</li>
+<li class="nav-item" data-bs-level="2"><a class="nav-link" href="#5-future-scope-use-cases">5. Future Scope Use Cases</a>
+<ul class="nav flex-column">
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div></div>
+<div class="col-md-9" role="main">
+<h1 id="use-case-document">Use Case Document</h1>
+<p><strong>Project:</strong> SkillCheck – Enclosed Access Online Test Platform (MVP)</p>
+<hr/>
+<h2 id="1-business-overview">1. Business Overview</h2>
+<p>SkillCheck is an enclosed-access online assessment platform designed for organizations that need to conduct secure, internal tests for employees, trainees, or members. Unlike open public testing systems, SkillCheck operates within a controlled environment where all users are pre-registered and access is managed tightly by an Admin.
+Organizations often rely on manual or fragmented methods to conduct internal assessments, resulting in inconsistencies, administrative overhead, and lack of centralized tracking. SkillCheck solves these problems by offering a structured test creation, assignment, and execution workflow.</p>
+<hr/>
+<h2 id="2-actors-roles">2. Actors / Roles</h2>
+<h3 id="21-admin">2.1 Admin</h3>
+<p>Responsible for managing platform users, assigning permissions, and overseeing tests and results.</p>
+<h3 id="22-test-creator">2.2 Test Creator</h3>
+<p>Authorized user who can create tests, add questions, assign Test Takers, and view results.</p>
+<h3 id="23-test-taker">2.3 Test Taker</h3>
+<p>End user who logs in to attempt tests assigned to them.</p>
+<hr/>
+<h2 id="3-preconditions">3. Preconditions</h2>
+<ol>
+<li>Test Takers must be registered users.</li>
+<li>Test Creators must assign Test Takers before tests become visible to them.</li>
+<li>Tests must contain at least one question before being published.</li>
+</ol>
+<hr/>
+<h2 id="4-use-cases">4. Use Cases</h2>
+<div class="mermaid">flowchart LR
+    %% Actors
+    subgraph Actors
+      A[Admin]
+      C[Test Creator]
+      T[Test Taker]
+    end
+
+    %% Use Cases
+    UC1["UC1\nManage Users"]
+    UC2["UC2\nGrant Creator Access"]
+    UC3["UC3\nCreate Test"]
+    UC4["UC4\nAdd / Edit Questions"]
+    UC5["UC5\nAssign Test Takers"]
+    UC6["UC6\nPublish Test"]
+    UC7["UC7\nView Results (by Test)"]
+    UC12["UC12\nView Results (by User)"]
+    UC8["UC8\nView All Results / Admin Dashboard"]
+    UC9["UC9\nView Assigned Tests (Taker)"]
+    UC10["UC10\nAttempt Test"]
+    UC11["UC11\nSubmit Test"]
+    UC13["UC13\nView Own Results"]
+
+    %% Links
+    A --- UC1
+    A --- UC2
+    A --- UC8
+
+    C --- UC3
+    C --- UC4
+    C --- UC5
+    C --- UC6
+    C --- UC7
+    C --- UC12
+
+    T --- UC9
+    T --- UC10
+    T --- UC11
+    T --- UC13
+
+    %% Style
+    classDef actor fill:#f2f2f2,stroke:#333,stroke-width:1px;
+    class A,C,T actor;
+
+</div>
+<p><br/>
+<br/></p>
+<h3 id="uc1-manage-users"><strong>UC1 – Manage Users</strong></h3>
+<p><strong>Actor:</strong> Admin<br>
+<strong>Preconditions:</strong> Admin is logged in.<br>
+<strong>Main Flow:</strong><br/>
+1. Admin opens “User Management.”<br/>
+2. Adds, edits, or deletes user accounts.<br/>
+3. Updates user status (active/inactive).<br/>
+<strong>Postcondition:</strong> User data updated in database.<br/>
+<strong>Exceptions:</strong> Invalid details or duplicate email found.</br></br></p>
+<hr/>
+<h3 id="uc2-grant-creator-access"><strong>UC2 – Grant Creator Access</strong></h3>
+<p><strong>Actor:</strong> Admin<br>
+<strong>Preconditions:</strong> Admin authenticated and user exists.<br/>
+<strong>Main Flow:</strong><br/>
+1. Admin selects an existing user.<br/>
+2. Grants “Test Creator” access.<br/>
+3. Saves permission changes.<br/>
+<strong>Postcondition:</strong> User promoted to Creator role.<br/>
+<strong>Exceptions:</strong> User already has creator access.</br></p>
+<hr/>
+<h3 id="uc3-create-test"><strong>UC3 – Create Test</strong></h3>
+<p><strong>Actor:</strong> Test Creator<br>
+<strong>Preconditions:</strong> Creator authenticated and has permissions.<br/>
+<strong>Main Flow:</strong><br/>
+1. Creator logs in and clicks “Create Test.”<br/>
+2. Enters test title, duration, and description.<br/>
+3. Saves the test in Draft status.<br/>
+<strong>Postcondition:</strong> Test saved successfully in Draft state.<br/>
+<strong>Exceptions:</strong> Missing required input fields.</br></p>
+<hr/>
+<h3 id="uc4-add-edit-questions"><strong>UC4 – Add / Edit Questions</strong></h3>
+<p><strong>Actor:</strong> Test Creator<br>
+<strong>Preconditions:</strong> Test exists in Draft state.<br/>
+<strong>Main Flow:</strong><br/>
+1. Creator opens test in edit mode.<br/>
+2. Adds questions with text, options, and correct answers.<br/>
+3. Edits or deletes questions as needed.<br/>
+4. Saves changes.<br/>
+<strong>Postcondition:</strong> Questions successfully added or modified.<br/>
+<strong>Exceptions:</strong> Validation error – incomplete question data.</br></p>
+<hr/>
+<h3 id="uc5-assign-test-takers"><strong>UC5 – Assign Test Takers</strong></h3>
+<p><strong>Actor:</strong> Test Creator<br>
+<strong>Preconditions:</strong> Test created and users available.<br/>
+<strong>Main Flow:</strong><br/>
+1. Creator navigates to “Assign Users.”<br/>
+2. Selects users from system list.<br/>
+3. Assigns selected users to the test.<br/>
+4. Saves assignments.<br/>
+<strong>Postcondition:</strong> Test Takers linked to the test.<br/>
+<strong>Exceptions:</strong> No user selected or assignment failed.</br></p>
+<hr/>
+<h3 id="uc6-publish-test"><strong>UC6 – Publish Test</strong></h3>
+<p><strong>Actor:</strong> Test Creator<br>
+<strong>Preconditions:</strong> Test must have at least one question.<br/>
+<strong>Main Flow:</strong><br/>
+1. Creator opens test from Drafts.<br/>
+2. Clicks “Publish.”<br/>
+3. System validates test data.<br/>
+<strong>Postcondition:</strong> Test published and visible to assigned users.<br/>
+<strong>Exceptions:</strong> No questions → Publish blocked.</br></p>
+<hr/>
+<h3 id="uc7-view-results-by-test"><strong>UC7 – View Results (by Test)</strong></h3>
+<p><strong>Actor:</strong> Test Creator<br>
+<strong>Preconditions:</strong> At least one test attempt exists.<br/>
+<strong>Main Flow:</strong><br/>
+1. Creator opens “Results.”<br/>
+2. Selects a test.<br/>
+3. Views all submissions and scores.<br/>
+4. Optionally exports results as CSV.<br/>
+<strong>Postcondition:</strong> Results displayed per test.<br/>
+<strong>Exceptions:</strong> No attempts found.</br></p>
+<hr/>
+<h3 id="uc8-view-all-results-admin-dashboard"><strong>UC8 – View All Results / Admin Dashboard</strong></h3>
+<p><strong>Actor:</strong> Admin<br>
+<strong>Preconditions:</strong> Admin authenticated.<br/>
+<strong>Main Flow:</strong><br/>
+1. Admin opens “Dashboard.”<br/>
+2. Views system-wide test data (users, tests, attempts).<br/>
+3. Analyzes performance metrics.<br/>
+<strong>Postcondition:</strong> Summary metrics displayed.<br/>
+<strong>Exceptions:</strong> Data unavailable or incomplete.</br></p>
+<hr/>
+<h3 id="uc9-view-assigned-tests"><strong>UC9 – View Assigned Tests</strong></h3>
+<p><strong>Actor:</strong> Test Taker<br>
+<strong>Preconditions:</strong> User has assigned tests.<br/>
+<strong>Main Flow:</strong><br/>
+1. Test Taker logs in.<br/>
+2. Opens “Assigned Tests.”<br/>
+3. System lists all active tests.<br/>
+<strong>Postcondition:</strong> Assigned tests visible.<br/>
+<strong>Exceptions:</strong> No active tests.</br></p>
+<hr/>
+<h3 id="uc10-attempt-test"><strong>UC10 – Attempt Test</strong></h3>
+<p><strong>Actor:</strong> Test Taker<br>
+<strong>Preconditions:</strong> Test assigned and Active.<br/>
+<strong>Main Flow:</strong><br/>
+1. Test Taker clicks “Start Test.”<br/>
+2. Timer begins.<br/>
+3. Answers questions sequentially.<br/>
+4. System auto-saves progress.<br/>
+<strong>Postcondition:</strong> Attempt created and responses stored.<br/>
+<strong>Exceptions:</strong> Network disconnection or timeout.</br></p>
+<hr/>
+<h3 id="uc11-submit-test"><strong>UC11 – Submit Test</strong></h3>
+<p><strong>Actor:</strong> Test Taker<br>
+<strong>Preconditions:</strong> Attempt in progress.<br/>
+<strong>Main Flow:</strong><br/>
+1. User clicks “Submit.”<br/>
+2. System validates answers and stops timer.<br/>
+3. Calculates score and saves record.<br/>
+<strong>Postcondition:</strong> Attempt marked “Completed.”<br/>
+<strong>Exceptions:</strong> Server error or timeout during submission.</br></p>
+<hr/>
+<h3 id="uc12-view-results-by-user"><strong>UC12 – View Results (by User)</strong></h3>
+<p><strong>Actor:</strong> Test Creator / Admin<br>
+<strong>Preconditions:</strong> User has completed at least one test.<br/>
+<strong>Main Flow:</strong><br/>
+1. Opens “Results by User.”<br/>
+2. Selects a specific user.<br/>
+3. System lists tests attempted and corresponding scores.<br/>
+<strong>Postcondition:</strong> User’s performance history displayed.<br/>
+<strong>Exceptions:</strong> User has no test attempts.</br></p>
+<hr/>
+<h3 id="uc13-view-own-results"><strong>UC13 – View Own Results</strong></h3>
+<p><strong>Actor:</strong> Test Taker (Web or Mobile App)<br/>
+<strong>Preconditions:</strong> Test Taker has completed at least one test.<br/>
+<strong>Main Flow:</strong><br/>
+1. Logs in via web or mobile app.<br/>
+2. Opens “My Results.”<br/>
+3. System fetches completed attempts.<br/>
+4. Displays scores, test names, and completion dates.<br/>
+<strong>Postcondition:</strong> Results visible to logged-in user.<br/>
+<strong>Exceptions:</strong> No completed attempts found.</p>
+<hr/>
+<h2 id="5-future-scope-use-cases">5. Future Scope Use Cases</h2>
+<ol>
+<li>Tab-switch and window-switch monitoring.</li>
+<li>Camera and microphone requirements.</li>
+<li>Face detection and cheating flagging.</li>
+<li>Live proctoring dashboard.</li>
+<li>Randomized question order per attempt.</li>
+</ol></div>
+</div>
+</div>
+<footer class="col-md-12">
+<hr/>
+<p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+</footer>
+<script src="../../js/bootstrap.bundle.min.js"></script>
+<script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+<script src="../../js/base.js"></script>
+<div aria-hidden="true" aria-labelledby="keyboardModalLabel" class="modal" id="mkdocs_keyboard_modal" role="dialog" tabindex="-1">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+<button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+</div>
+<div class="modal-body">
+<table class="table">
+<thead>
+<tr>
+<th style="width: 20%;">Keys</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="help shortcut"><kbd>?</kbd></td>
+<td>Open this help</td>
+</tr>
+<tr>
+<td class="next shortcut"><kbd>n</kbd></td>
+<td>Next page</td>
+</tr>
+<tr>
+<td class="prev shortcut"><kbd>p</kbd></td>
+<td>Previous page</td>
+</tr>
+<tr>
+<td class="search shortcut"><kbd>s</kbd></td>
+<td>Search</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="modal-footer">
+</div>
+</div>
+</div>
+</div>
+<script type="module">import mermaid from "https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs";
+mermaid.initialize({});</script></body>
+</html>
