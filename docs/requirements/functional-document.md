@@ -256,41 +256,42 @@ Only logged-in user’s results should be visible.
 
 ## 5. Data Model Overview
 
-### Users
-- id  
-- name  
-- email  
-- password_hash  
-- role (admin, creator, taker)  
-- is_active  
+## Users
+id<br>
+name<br>
+email<br>
+password_hash<br>
+role (admin, creator, taker)<br>
+is_active<br>
 
-### Tests
-- id  
-- title  
-- description  
-- duration_minutes  
-- status (draft, active, closed)  
-- created_by  
+## Tests
+id<br>
+title<br>
+description<br>
+duration_minutes<br>
+status (draft, active, closed)<br>
+created_by<br>
 
-### Questions
-- id  
-- test_id  
-- question_text  
-- options (JSON array)  
-- correct_option_id  
+## Questions
+id<br>
+test_id<br>
+question_text<br>
+options (JSON array)<br>
+correct_option_id<br>
 
-### Test Assignments
-- id  
-- test_id  
-- user_id  
+## Test Assignments
+id<br>
+test_id<br>
+user_id<br>
 
-### Attempts
-- id  
-- test_id  
-- user_id  
-- started_at  
-- ended_at  
-- responses (JSON)  
-- score  
+## Attempts
+id<br>
+test_id<br>
+user_id<br>
+started_at<br>
+ended_at<br>
+responses (JSON)<br>
+score<br>
+
 
 
