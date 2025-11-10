@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Use Case Document - SkillCheck Documentation</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../../css/brands.min.css" rel="stylesheet">
+        <link href="../../css/solid.min.css" rel="stylesheet">
+        <link href="../../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">SkillCheck Documentation</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href="../.." class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Requirements</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">Use Case Document</a>
+</li>
+                                    
+<li>
+    <a href="../functional-document/" class="dropdown-item">Functional Specification</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../.." class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../functional-document/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#use-case-document" class="nav-link">Use Case Document</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#1-introduction" class="nav-link">1. Introduction</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#2-actors-roles" class="nav-link">2. Actors / Roles</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#3-preconditions" class="nav-link">3. Preconditions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#4-use-cases" class="nav-link">4. Use Cases</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#5-future-scope-use-cases" class="nav-link">5. Future Scope Use Cases</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="use-case-document">Use Case Document</h1>
+<p><strong>Project:</strong> SkillCheck – Enclosed Access Online Test Platform (MVP)</p>
+<hr />
+<h2 id="1-introduction">1. Introduction</h2>
+<p>SkillCheck is an internal online test platform designed for enclosed environments such as organizations, institutions, or training departments. The system includes three roles: Admin, Test Creator, and Test Taker. The Admin manages all users and permissions. Test Creators design tests and assign them to specific users. Test Takers log in to view and attempt the tests assigned to them. The MVP focuses on time-based assessments without proctoring features.</p>
+<hr />
+<h2 id="2-actors-roles">2. Actors / Roles</h2>
+<h3 id="21-admin">2.1 Admin</h3>
+<p>Responsible for managing platform users, assigning permissions, and overseeing tests and results.</p>
+<h3 id="22-test-creator">2.2 Test Creator</h3>
+<p>Authorized user who can create tests, add questions, assign Test Takers, and view results.</p>
+<h3 id="23-test-taker">2.3 Test Taker</h3>
+<p>End user who logs in to attempt tests assigned to them.</p>
+<hr />
+<h2 id="3-preconditions">3. Preconditions</h2>
+<ol>
+<li>Only Admin can create or authorize user accounts.</li>
+<li>Admin must explicitly assign the Test Creator role before a user can create tests.</li>
+<li>Test Takers must be registered users.</li>
+<li>Test Creators must assign Test Takers before tests become visible to them.</li>
+<li>Tests must contain at least one question before being published.</li>
+<li>Published tests become available only to assigned users.</li>
+</ol>
+<hr />
+<h2 id="4-use-cases">4. Use Cases</h2>
+<h3 id="41-admin-adds-and-manages-users">4.1 Admin Adds and Manages Users</h3>
+<p><strong>Actor:</strong> Admin<br />
+<strong>Preconditions:</strong> Admin is logged in.<br />
+<strong>Main Flow:</strong>
+1. Admin opens User Management.
+2. Admin adds new users or updates existing users.
+3. Admin grants or revokes Test Creator permissions.
+4. Admin activates, deactivates, or removes users.
+<strong>Postcondition:</strong> User accounts and permissions updated.
+<strong>Exceptions:</strong> Invalid data or database conflicts.</p>
+<hr />
+<h3 id="42-test-creator-login">4.2 Test Creator Login</h3>
+<p><strong>Actor:</strong> Test Creator<br />
+<strong>Preconditions:</strong> Creator permissions granted by Admin.<br />
+<strong>Main Flow:</strong>
+1. Creator logs in.
+2. System verifies role.
+3. Creator dashboard loads.
+<strong>Postcondition:</strong> Creator can access test creation tools.
+<strong>Exceptions:</strong> Unauthorized users receive an “Access Denied” message.</p>
+<hr />
+<h3 id="43-create-test">4.3 Create Test</h3>
+<p><strong>Actor:</strong> Test Creator<br />
+<strong>Preconditions:</strong> Creator is logged in.<br />
+<strong>Main Flow:</strong>
+1. Creator clicks “Create Test.”
+2. Enters title, description, and test duration.
+3. Saves the test in Draft state.
+<strong>Postcondition:</strong> Test saved with Draft status.
+<strong>Exceptions:</strong> Missing required fields.</p>
+<hr />
+<h3 id="44-add-or-edit-questions">4.4 Add or Edit Questions</h3>
+<p><strong>Actor:</strong> Test Creator<br />
+<strong>Preconditions:</strong> Test exists in Draft state.<br />
+<strong>Main Flow:</strong>
+1. Creator selects the test.
+2. Adds questions with text, options, and one correct answer.
+3. Optionally edits or deletes questions before publishing.
+4. Saves the updates.
+<strong>Postcondition:</strong> Questions linked to the test.
+<strong>Exceptions:</strong> Missing text or correct answer.</p>
+<hr />
+<h3 id="45-assign-users-to-test">4.5 Assign Users to Test</h3>
+<p><strong>Actor:</strong> Test Creator<br />
+<strong>Preconditions:</strong> Test exists and users exist in system.<br />
+<strong>Main Flow:</strong>
+1. Creator opens “Assign Users” panel.
+2. Selects users from the registered user list.
+3. Assigns users to the test.
+4. Saves assignments.
+<strong>Postcondition:</strong> Users assigned to the test.
+<strong>Exceptions:</strong> No users selected or database issues.</p>
+<hr />
+<h3 id="46-publish-test">4.6 Publish Test</h3>
+<p><strong>Actor:</strong> Test Creator<br />
+<strong>Preconditions:</strong> Test must have at least one question.<br />
+<strong>Main Flow:</strong>
+1. Creator marks test as Active.
+2. System approves state change.
+<strong>Postcondition:</strong> Test becomes visible to assigned Test Takers.
+<strong>Exceptions:</strong> Attempt to publish without any questions.</p>
+<hr />
+<h3 id="47-test-taker-attempts-test">4.7 Test Taker Attempts Test</h3>
+<p><strong>Actor:</strong> Test Taker<br />
+<strong>Preconditions:</strong> Test assigned to the Test Taker and set to Active.<br />
+<strong>Main Flow:</strong>
+1. Test Taker logs in.
+2. Navigates to Assigned Tests.
+3. Selects the test and clicks “Start.”
+4. Timer begins.
+5. User answers questions.
+6. Submits test manually or system auto-submits on timeout.
+<strong>Postcondition:</strong> Responses stored and scored.
+<strong>Exceptions:</strong> Test already attempted or expired.</p>
+<hr />
+<h3 id="48-view-results">4.8 View Results</h3>
+<p><strong>Actors:</strong> Test Creator, Admin<br />
+<strong>Preconditions:</strong> At least one test attempt exists.<br />
+<strong>Main Flow:</strong>
+1. User opens Results section.
+2. Selects a test.
+3. Views list of attempts.
+4. Views detailed responses and score.
+5. Optionally exports CSV.
+<strong>Postcondition:</strong> Results displayed and available for export.
+<strong>Exceptions:</strong> No attempts found.</p>
+<hr />
+<h2 id="5-future-scope-use-cases">5. Future Scope Use Cases</h2>
+<ol>
+<li>Tab-switch and window-switch monitoring.</li>
+<li>Camera and microphone requirements.</li>
+<li>Face detection and cheating flagging.</li>
+<li>Live proctoring dashboard.</li>
+<li>Mobile application.</li>
+<li>Randomized question order per attempt.</li>
+</ol></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js"></script>
+        <script src="../../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

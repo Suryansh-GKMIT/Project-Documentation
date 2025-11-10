@@ -1,0 +1,9 @@
+site_name: SkillCheck Documentation
+nav:
+  - Home: index.md
+  - Requirements:
+      - Use Case Document: requirements/use-case-document.md
+      - Functional Specification: requirements/functional-document.md
+
+plugins:
+  - mermaid2
