@@ -1,103 +1,696 @@
+
 <!DOCTYPE html>
 
-<html data-bs-theme="light" lang="en">
+<html class="no-js" lang="en">
 <head>
 <meta charset="utf-8"/>
-<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<link href="../../img/favicon.ico" rel="shortcut icon"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="../.." rel="prev"/>
+<link href="../use-case-document/" rel="next"/>
+<link href="../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.0" name="generator"/>
 <title>Functional Specification - SkillCheck Documentation</title>
-<link href="../../css/bootstrap.min.css" rel="stylesheet"/>
-<link href="../../css/fontawesome.min.css" rel="stylesheet"/>
-<link href="../../css/brands.min.css" rel="stylesheet"/>
-<link href="../../css/solid.min.css" rel="stylesheet"/>
-<link href="../../css/v4-font-face.min.css" rel="stylesheet"/>
-<link href="../../css/base.css" rel="stylesheet"/>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" id="hljs-light" rel="stylesheet"/>
-<link disabled="" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" id="hljs-dark" rel="stylesheet"/>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
-<script>hljs.highlightAll();</script>
+<link href="../../assets/stylesheets/main.618322db.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 </head>
-<body>
-<div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
-<div class="container">
-<a class="navbar-brand" href="../..">SkillCheck Documentation</a>
-<!-- Expander button -->
-<button aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbar-collapse" data-bs-toggle="collapse" type="button">
-<span class="navbar-toggler-icon"></span>
-</button>
-<!-- Expanded navigation -->
-<div class="navbar-collapse collapse" id="navbar-collapse">
-<!-- Main navigation -->
-<ul class="nav navbar-nav">
-<li class="nav-item">
-<a class="nav-link" href="../..">Home</a>
+<body dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#functional-specification-document">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--shadow" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="SkillCheck Documentation" class="md-header__button md-logo" data-md-component="logo" href="../.." title="SkillCheck Documentation">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            SkillCheck Documentation
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Functional Specification
+            
+          </span>
+</div>
+</div>
+</div>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="SkillCheck Documentation" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="SkillCheck Documentation">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+    SkillCheck Documentation
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
+<span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+</a>
 </li>
-<li class="nav-item dropdown">
-<a aria-current="page" aria-expanded="false" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button">Requirements</a>
-<ul class="dropdown-menu">
-<li>
-<a class="dropdown-item" href="../use-case-document/">Use Case Document</a>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Requirements
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Requirements
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    
+  
+    Functional Specification
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    
+  
+    Functional Specification
+  
+
+    
+  </span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-system-overview">
+<span class="md-ellipsis">
+      
+        1. System Overview
+      
+    </span>
+</a>
 </li>
-<li>
-<a aria-current="page" class="dropdown-item active" href="./">Functional Specification</a>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-roles-and-permissions">
+<span class="md-ellipsis">
+      
+        2. Roles and Permissions
+      
+    </span>
+</a>
+<nav aria-label="2. Roles and Permissions" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#21-admin">
+<span class="md-ellipsis">
+      
+        2.1 Admin
+      
+    </span>
+</a>
 </li>
-</ul>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#22-test-creator">
+<span class="md-ellipsis">
+      
+        2.2 Test Creator
+      
+    </span>
+</a>
 </li>
-</ul>
-<ul class="nav navbar-nav ms-md-auto">
-<li class="nav-item">
-<a class="nav-link" href="../use-case-document/" rel="prev">
-<i class="fa fa-arrow-left"></i> Previous
-                                </a>
-</li>
-<li class="nav-item">
-<a class="nav-link disabled" rel="next">
-                                    Next <i class="fa fa-arrow-right"></i>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#23-test-taker">
+<span class="md-ellipsis">
+      
+        2.3 Test Taker
+      
+    </span>
 </a>
 </li>
 </ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-functional-requirements">
+<span class="md-ellipsis">
+      
+        3. Functional Requirements
+      
+    </span>
+</a>
+<nav aria-label="3. Functional Requirements" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#fr1-authentication-and-authorization-uc1-uc2">
+<span class="md-ellipsis">
+      
+        FR1 – Authentication and Authorization (UC1, UC2)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#fr2-user-management-uc1-manage-users">
+<span class="md-ellipsis">
+      
+        FR2 – User Management (UC1 – Manage Users)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#fr3-grant-creator-access-uc2-grant-creator-access">
+<span class="md-ellipsis">
+      
+        FR3 – Grant Creator Access (UC2 – Grant Creator Access)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#fr4-test-creation-uc3-create-test">
+<span class="md-ellipsis">
+      
+        FR4 – Test Creation (UC3 – Create Test)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#fr5-question-management-uc4-add-edit-questions">
+<span class="md-ellipsis">
+      
+        FR5 – Question Management (UC4 – Add / Edit Questions)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#fr6-assign-users-to-tests-uc5-assign-test-takers">
+<span class="md-ellipsis">
+      
+        FR6 – Assign Users to Tests (UC5 – Assign Test Takers)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#fr7-publish-test-uc6-publish-test">
+<span class="md-ellipsis">
+      
+        FR7 – Publish Test (UC6 – Publish Test)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#fr8-attempt-test-uc9-uc10-view-attempt-test">
+<span class="md-ellipsis">
+      
+        FR8 – Attempt Test (UC9, UC10 – View / Attempt Test)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#fr9-submit-test-uc11-submit-test">
+<span class="md-ellipsis">
+      
+        FR9 – Submit Test (UC11 – Submit Test)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#fr10-view-results-uc7-view-results-by-test">
+<span class="md-ellipsis">
+      
+        FR10 – View Results (UC7 – View Results by Test)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#fr11-view-results-by-user-uc12-admin-creator">
+<span class="md-ellipsis">
+      
+        FR11 – View Results by User (UC12 – Admin / Creator)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#fr12-admin-dashboard-uc8-system-overview">
+<span class="md-ellipsis">
+      
+        FR12 – Admin Dashboard (UC8 – System Overview)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#fr13-view-own-results-uc13-test-taker">
+<span class="md-ellipsis">
+      
+        FR13 – View Own Results (UC13 – Test Taker)
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-non-functional-requirements">
+<span class="md-ellipsis">
+      
+        4. Non-Functional Requirements
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#5-data-model-overview">
+<span class="md-ellipsis">
+      
+        5. Data Model Overview
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#users">
+<span class="md-ellipsis">
+      
+        Users
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tests">
+<span class="md-ellipsis">
+      
+        Tests
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#questions">
+<span class="md-ellipsis">
+      
+        Questions
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#test-assignments">
+<span class="md-ellipsis">
+      
+        Test Assignments
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#attempts">
+<span class="md-ellipsis">
+      
+        Attempts
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../use-case-document/">
+<span class="md-ellipsis">
+    
+  
+    Use Case Document
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../erd/">
+<span class="md-ellipsis">
+    
+  
+    Entity Relationship Diagram
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../system-architecture/">
+<span class="md-ellipsis">
+    
+  
+    System Architecture
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../dfd/">
+<span class="md-ellipsis">
+    
+  
+    Data Flow Diagram
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
 </div>
 </div>
 </div>
-<div class="container">
-<div class="row">
-<div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
-<div class="navbar-header">
-<button class="navbar-toggler collapsed" data-bs-target="#toc-collapse" data-bs-toggle="collapse" title="Table of Contents" type="button">
-<span class="fa fa-angle-down"></span>
-</button>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-system-overview">
+<span class="md-ellipsis">
+      
+        1. System Overview
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-roles-and-permissions">
+<span class="md-ellipsis">
+      
+        2. Roles and Permissions
+      
+    </span>
+</a>
+<nav aria-label="2. Roles and Permissions" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#21-admin">
+<span class="md-ellipsis">
+      
+        2.1 Admin
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#22-test-creator">
+<span class="md-ellipsis">
+      
+        2.2 Test Creator
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#23-test-taker">
+<span class="md-ellipsis">
+      
+        2.3 Test Taker
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-functional-requirements">
+<span class="md-ellipsis">
+      
+        3. Functional Requirements
+      
+    </span>
+</a>
+<nav aria-label="3. Functional Requirements" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#fr1-authentication-and-authorization-uc1-uc2">
+<span class="md-ellipsis">
+      
+        FR1 – Authentication and Authorization (UC1, UC2)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#fr2-user-management-uc1-manage-users">
+<span class="md-ellipsis">
+      
+        FR2 – User Management (UC1 – Manage Users)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#fr3-grant-creator-access-uc2-grant-creator-access">
+<span class="md-ellipsis">
+      
+        FR3 – Grant Creator Access (UC2 – Grant Creator Access)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#fr4-test-creation-uc3-create-test">
+<span class="md-ellipsis">
+      
+        FR4 – Test Creation (UC3 – Create Test)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#fr5-question-management-uc4-add-edit-questions">
+<span class="md-ellipsis">
+      
+        FR5 – Question Management (UC4 – Add / Edit Questions)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#fr6-assign-users-to-tests-uc5-assign-test-takers">
+<span class="md-ellipsis">
+      
+        FR6 – Assign Users to Tests (UC5 – Assign Test Takers)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#fr7-publish-test-uc6-publish-test">
+<span class="md-ellipsis">
+      
+        FR7 – Publish Test (UC6 – Publish Test)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#fr8-attempt-test-uc9-uc10-view-attempt-test">
+<span class="md-ellipsis">
+      
+        FR8 – Attempt Test (UC9, UC10 – View / Attempt Test)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#fr9-submit-test-uc11-submit-test">
+<span class="md-ellipsis">
+      
+        FR9 – Submit Test (UC11 – Submit Test)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#fr10-view-results-uc7-view-results-by-test">
+<span class="md-ellipsis">
+      
+        FR10 – View Results (UC7 – View Results by Test)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#fr11-view-results-by-user-uc12-admin-creator">
+<span class="md-ellipsis">
+      
+        FR11 – View Results by User (UC12 – Admin / Creator)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#fr12-admin-dashboard-uc8-system-overview">
+<span class="md-ellipsis">
+      
+        FR12 – Admin Dashboard (UC8 – System Overview)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#fr13-view-own-results-uc13-test-taker">
+<span class="md-ellipsis">
+      
+        FR13 – View Own Results (UC13 – Test Taker)
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-non-functional-requirements">
+<span class="md-ellipsis">
+      
+        4. Non-Functional Requirements
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#5-data-model-overview">
+<span class="md-ellipsis">
+      
+        5. Data Model Overview
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#users">
+<span class="md-ellipsis">
+      
+        Users
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tests">
+<span class="md-ellipsis">
+      
+        Tests
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#questions">
+<span class="md-ellipsis">
+      
+        Questions
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#test-assignments">
+<span class="md-ellipsis">
+      
+        Test Assignments
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#attempts">
+<span class="md-ellipsis">
+      
+        Attempts
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
 </div>
-<div class="navbar-collapse collapse card bg-body-tertiary" id="toc-collapse">
-<ul class="nav flex-column">
-<li class="nav-item" data-bs-level="1"><a class="nav-link" href="#functional-specification-document">Functional Specification Document</a>
-<ul class="nav flex-column">
-<li class="nav-item" data-bs-level="2"><a class="nav-link" href="#1-system-overview">1. System Overview</a>
-<ul class="nav flex-column">
-</ul>
-</li>
-<li class="nav-item" data-bs-level="2"><a class="nav-link" href="#2-roles-and-permissions">2. Roles and Permissions</a>
-<ul class="nav flex-column">
-</ul>
-</li>
-<li class="nav-item" data-bs-level="2"><a class="nav-link" href="#3-functional-requirements">3. Functional Requirements</a>
-<ul class="nav flex-column">
-</ul>
-</li>
-<li class="nav-item" data-bs-level="2"><a class="nav-link" href="#4-non-functional-requirements">4. Non-Functional Requirements</a>
-<ul class="nav flex-column">
-</ul>
-</li>
-<li class="nav-item" data-bs-level="2"><a class="nav-link" href="#5-data-model-overview">5. Data Model Overview</a>
-<ul class="nav flex-column">
-</ul>
-</li>
-</ul>
-</li>
-</ul>
 </div>
-</div></div>
-<div class="col-md-9" role="main">
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
 <h1 id="functional-specification-document">Functional Specification Document</h1>
 <p><strong>Project:</strong> SkillCheck – Enclosed Access Online Test Platform (MVP)</p>
 <hr/>
@@ -296,100 +889,63 @@ Only logged-in user’s results should be visible.</p>
 </ol>
 <hr/>
 <h2 id="5-data-model-overview">5. Data Model Overview</h2>
-<h3 id="users">Users</h3>
-<ul>
-<li>id  </li>
-<li>name  </li>
-<li>email  </li>
-<li>password_hash  </li>
-<li>role (admin, creator, taker)  </li>
-<li>is_active  </li>
-</ul>
-<h3 id="tests">Tests</h3>
-<ul>
-<li>id  </li>
-<li>title  </li>
-<li>description  </li>
-<li>duration_minutes  </li>
-<li>status (draft, active, closed)  </li>
-<li>created_by  </li>
-</ul>
-<h3 id="questions">Questions</h3>
-<ul>
-<li>id  </li>
-<li>test_id  </li>
-<li>question_text  </li>
-<li>options (JSON array)  </li>
-<li>correct_option_id  </li>
-</ul>
-<h3 id="test-assignments">Test Assignments</h3>
-<ul>
-<li>id  </li>
-<li>test_id  </li>
-<li>user_id  </li>
-</ul>
-<h3 id="attempts">Attempts</h3>
-<ul>
-<li>id  </li>
-<li>test_id  </li>
-<li>user_id  </li>
-<li>started_at  </li>
-<li>ended_at  </li>
-<li>responses (JSON)  </li>
-<li>score  </li>
-</ul></div>
+<h2 id="users">Users</h2>
+<p>id<br/>
+name<br/>
+email<br/>
+password_hash<br/>
+role (admin, creator, taker)<br/>
+is_active<br/></p>
+<h2 id="tests">Tests</h2>
+<p>id<br/>
+title<br/>
+description<br/>
+duration_minutes<br/>
+status (draft, active, closed)<br/>
+created_by<br/></p>
+<h2 id="questions">Questions</h2>
+<p>id<br/>
+test_id<br/>
+question_text<br/>
+options (JSON array)<br/>
+correct_option_id<br/></p>
+<h2 id="test-assignments">Test Assignments</h2>
+<p>id<br/>
+test_id<br/>
+user_id<br/></p>
+<h2 id="attempts">Attempts</h2>
+<p>id<br/>
+test_id<br/>
+user_id<br/>
+started_at<br/>
+ended_at<br/>
+responses (JSON)<br/>
+score<br/></p>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
 </div>
 </div>
-<footer class="col-md-12">
-<hr/>
-<p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+</div>
 </footer>
-<script src="../../js/bootstrap.bundle.min.js"></script>
-<script>
-            var base_url = "../..",
-                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
-        </script>
-<script src="../../js/base.js"></script>
-<div aria-hidden="true" aria-labelledby="keyboardModalLabel" class="modal" id="mkdocs_keyboard_modal" role="dialog" tabindex="-1">
-<div class="modal-dialog">
-<div class="modal-content">
-<div class="modal-header">
-<h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
-<button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
 </div>
-<div class="modal-body">
-<table class="table">
-<thead>
-<tr>
-<th style="width: 20%;">Keys</th>
-<th>Action</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="help shortcut"><kbd>?</kbd></td>
-<td>Open this help</td>
-</tr>
-<tr>
-<td class="next shortcut"><kbd>n</kbd></td>
-<td>Next page</td>
-</tr>
-<tr>
-<td class="prev shortcut"><kbd>p</kbd></td>
-<td>Previous page</td>
-</tr>
-<tr>
-<td class="search shortcut"><kbd>s</kbd></td>
-<td>Search</td>
-</tr>
-</tbody>
-</table>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
 </div>
-<div class="modal-footer">
-</div>
-</div>
-</div>
-</div>
+<script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
 <script type="module">import mermaid from "https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs";
 mermaid.initialize({});</script></body>
 </html>
