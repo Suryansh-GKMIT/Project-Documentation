@@ -1,4 +1,8 @@
 site_name: SkillCheck Documentation
+
+theme:
+  name: material
+  
 nav:
   - Home: index.md
   - Requirements:
