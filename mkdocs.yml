@@ -2,12 +2,15 @@ site_name: SkillCheck Documentation
 
 theme:
   name: material
-  
+
 nav:
   - Home: index.md
   - Requirements:
       - Functional Specification: requirements/functional-document.md
       - Use Case Document: requirements/use-case-document.md
+      - Entity Relationship Diagram: requirements/erd.md
+      - System Architecture: requirements/system-architecture.md
+      - Data Flow Diagram: requirements/dfd.md
       
 
 plugins:
