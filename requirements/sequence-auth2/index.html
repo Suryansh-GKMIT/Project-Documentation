@@ -9,10 +9,6 @@
       
       
       
-        <link rel="prev" href="../use-case-document/">
-      
-      
-        <link rel="next" href="../system-architecture/">
       
       
         
@@ -23,7 +19,7 @@
     
     
       
-        <title>Entity Relationship Diagram - SkillCheck Documentation</title>
+        <title>Authentication and Authorization Flow - SkillCheck Documentation</title>
       
     
     
@@ -64,7 +60,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#erd-skillcheck-normalized" class="md-skip">
+        <a href="#authentication-and-authorization-flow" class="md-skip">
           Skip to content
         </a>
       
@@ -100,7 +96,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Entity Relationship Diagram
+              Authentication and Authorization Flow
             
           </span>
         </div>
@@ -180,20 +176,18 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
@@ -214,7 +208,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -285,19 +279,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../erd/" class="md-nav__link">
         
   
   
@@ -313,7 +298,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -417,49 +401,12 @@
 
 
 
-<h1 id="erd-skillcheck-normalized">ERD — skillcheck (normalized)</h1>
-<p>This diagram shows the normalized schema for SkillCheck (roles, users, tests, questions, options, assignments, attempts, and user responses).<br>
-PK / FK annotations are included for clarity.<br></p>
-<p><img alt="ERD" src="../../images/Mermaid%20Chart%20-%20Create%20complex%2C%20visual%20diagrams%20with%20text.-2025-11-11-074855.png" /></p>
-<h1 id="database-schema-overview">Database Schema Overview</h1>
-<p>The SkillCheck platform follows a <strong>relational database structure</strong> designed to manage users, roles, tests, and assessment data efficiently.<br />
-This schema ensures data integrity, secure access control, and clear relationships between test creation, assignment, and evaluation processes.  </p>
-<p><br></p>
-<h2 id="1-roles-and-users">1. Roles and Users</h2>
-<ul>
-<li><strong>roles</strong> — Defines system-level roles such as <em>Admin</em>, <em>Test Creator</em>, and <em>Test Taker</em>.  </li>
-<li><strong>users</strong> — Stores individual user details including name, email, and authentication credentials.  </li>
-<li><strong>roles_users</strong> — Acts as a junction table to support a many-to-many relationship between users and roles, enabling flexible access management.  </li>
-</ul>
-<p><br></p>
-<h2 id="2-tests-and-questions">2. Tests and Questions</h2>
-<ul>
-<li><strong>tests</strong> — Represents each test created within the system, including its title, description, duration, status, and the user who created it.  </li>
-<li><strong>questions</strong> — Contains individual questions linked to a specific test. Each question references the correct option for validation.  </li>
-<li><strong>options</strong> — Holds multiple-choice options for each question, one of which is marked as correct.  </li>
-</ul>
-<p><br></p>
-<h2 id="3-assignments-and-attempts">3. Assignments and Attempts</h2>
-<ul>
-<li><strong>test_assignments</strong> — Manages which users are assigned to which tests.<br />
-  Ensures that only authorized users can attempt specific assessments.  </li>
-<li><strong>test_attempts</strong> — Records each attempt made by a user on a test, storing start and end times along with the calculated score.  </li>
-</ul>
-<p><br></p>
-<h2 id="4-user-responses">4. User Responses</h2>
-<ul>
-<li><strong>user_responses</strong> — Tracks individual question responses within each test attempt.<br />
-  It logs the selected option, verifies correctness, and contributes to score calculation.  </li>
-</ul>
-<p><br></p>
-<h2 id="5-key-design-highlights">5. Key Design Highlights</h2>
-<ul>
-<li>Every table includes <strong>created_at</strong>, <strong>updated_at</strong>, and <strong>deleted_at</strong> timestamps for full auditability.  </li>
-<li>Foreign key constraints maintain relational consistency between users, tests, and responses.  </li>
-<li>Supports <strong>multi-role user management</strong>, <strong>test versioning</strong>, and <strong>secure submission tracking</strong>.  </li>
-</ul>
-<p><br></p>
-<p>This schema structure enables SkillCheck to maintain a clear and secure workflow — from <strong>test creation and assignment</strong> to <strong>attempt evaluation and result recording</strong> — while ensuring data consistency across all modules.</p>
+<h1 id="authentication-and-authorization-flow">Authentication and Authorization Flow</h1>
+<p>This section explains how user authentication and authorization work within the <strong>SkillCheck</strong> platform.<br>
+The process ensures that only verified users can access system resources according to their assigned roles (Admin, Test Creator, or Test Taker).<br></p>
+<p>This mechanism ensures secure communication between the frontend and backend, maintaining strict access control across the platform.<br>
+The diagram below illustrates the complete flow of authentication and authorization.</p>
+<p><img alt="Sequence-Diagram" src="../../images/Mermaid%20Chart%20-%20Create%20complex%2C%20visual%20diagrams%20with%20text.-2025-11-12-062039.png" /></p>
 
 
 
