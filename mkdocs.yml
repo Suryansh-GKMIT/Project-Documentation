@@ -5,7 +5,7 @@ theme:
 
 nav:
   - Home: index.md
-  - Requirements:
+  - Technical Document:
       - Functional Specification: requirements/functional-document.md
       - Use Case Document: requirements/use-case-document.md
       - Entity Relationship Diagram: requirements/erd.md
