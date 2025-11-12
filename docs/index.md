@@ -33,7 +33,7 @@ All actions and data are securely handled through a single centralized database,
 ## Technology Stack
 
 - **Frontend:** React 19 (PWA) + Vite 7   
-- **Backend:** Node.js 24 (LTS) + Express 5 + Prisma ORM  
+- **Backend:** Node.js 24 (LTS) + Express 5 + Sequalize ORM  
 - **Database:** PostgreSQL 17 (RDS – AWS)  
 - **Authentication:** JWT-based role control    
 - **Infrastructure:** AWS ( RDS, EC2)
