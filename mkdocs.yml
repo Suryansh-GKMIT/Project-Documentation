@@ -10,7 +10,8 @@ nav:
       - Use Case Document: requirements/use-case-document.md
       - Entity Relationship Diagram: requirements/erd.md
       - System Architecture: requirements/system-architecture.md
-      - Data Flow Diagram: requirements/dfd.md
+      - Data Flow: requirements/dfd.md
+      - Authentication and Authorization: requirements/sequence-auth2.md
       
 
 plugins:
