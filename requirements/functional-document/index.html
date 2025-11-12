@@ -320,60 +320,6 @@
     </span>
 </a>
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#5-data-model-overview">
-<span class="md-ellipsis">
-      
-        5. Data Model Overview
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#users">
-<span class="md-ellipsis">
-      
-        Users
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#tests">
-<span class="md-ellipsis">
-      
-        Tests
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#questions">
-<span class="md-ellipsis">
-      
-        Questions
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#test-assignments">
-<span class="md-ellipsis">
-      
-        Test Assignments
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#attempts">
-<span class="md-ellipsis">
-      
-        Attempts
-      
-    </span>
-</a>
-</li>
 </ul>
 </nav>
 </li>
@@ -630,60 +576,6 @@
     </span>
 </a>
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#5-data-model-overview">
-<span class="md-ellipsis">
-      
-        5. Data Model Overview
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#users">
-<span class="md-ellipsis">
-      
-        Users
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#tests">
-<span class="md-ellipsis">
-      
-        Tests
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#questions">
-<span class="md-ellipsis">
-      
-        Questions
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#test-assignments">
-<span class="md-ellipsis">
-      
-        Test Assignments
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#attempts">
-<span class="md-ellipsis">
-      
-        Attempts
-      
-    </span>
-</a>
-</li>
 </ul>
 </nav>
 </div>
@@ -888,39 +780,6 @@ Only logged-in user’s results should be visible.</p>
 <li>Extensibility: Future proctoring features must integrate without major redesign.</li>
 </ol>
 <hr/>
-<h2 id="5-data-model-overview">5. Data Model Overview</h2>
-<h2 id="users">Users</h2>
-<p>id<br/>
-name<br/>
-email<br/>
-password_hash<br/>
-role (admin, creator, taker)<br/>
-is_active<br/></p>
-<h2 id="tests">Tests</h2>
-<p>id<br/>
-title<br/>
-description<br/>
-duration_minutes<br/>
-status (draft, active, closed)<br/>
-created_by<br/></p>
-<h2 id="questions">Questions</h2>
-<p>id<br/>
-test_id<br/>
-question_text<br/>
-options (JSON array)<br/>
-correct_option_id<br/></p>
-<h2 id="test-assignments">Test Assignments</h2>
-<p>id<br/>
-test_id<br/>
-user_id<br/></p>
-<h2 id="attempts">Attempts</h2>
-<p>id<br/>
-test_id<br/>
-user_id<br/>
-started_at<br/>
-ended_at<br/>
-responses (JSON)<br/>
-score<br/></p>
 </article>
 </div>
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>

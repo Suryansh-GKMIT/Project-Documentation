@@ -62,7 +62,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#skillcheck-documentation" class="md-skip">
+        <a href="#skillcheck-enclosed-access-online-test-platform-mvp" class="md-skip">
           Skip to content
         </a>
       
@@ -163,6 +163,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="." class="md-nav__link md-nav__link--active">
         
   
@@ -179,6 +197,80 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#system-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        System Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core Features
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#technology-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Technology Stack
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        System Objectives
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-flow-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Flow Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -398,6 +490,69 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#system-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        System Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core Features
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#technology-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Technology Stack
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        System Objectives
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-flow-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Flow Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -413,8 +568,57 @@
 
 
 
-<h1 id="skillcheck-documentation">SkillCheck Documentation</h1>
-<p>SkillCheck is an enclosed-access online test platform designed for organizations, institutes, and teams. This documentation contains the functional and use case specifications for the MVP version of the platform.</p>
+<h1 id="skillcheck-enclosed-access-online-test-platform-mvp">SkillCheck – Enclosed Access Online Test Platform (MVP)</h1>
+<p><strong>SkillCheck</strong> is a secure, closed-access online testing platform designed to manage and deliver assessments within an organization.<br>
+It provides controlled access to tests, user role management, automated grading, and detailed result tracking — ensuring integrity, scalability, and seamless user experience for all participants.</p>
+<hr />
+<h2 id="system-overview">System Overview</h2>
+<p>The platform operates within a restricted environment where only authorized users can access the system.<br>
+It supports three primary roles:</p>
+<ul>
+<li><strong>Admin</strong> – Manages users, assigns roles (Test Creator / Test Taker), oversees the entire system, and monitors test performance.  </li>
+<li><strong>Test Creator</strong> – Designs, edits, and publishes tests, adds questions and options, assigns tests to users, and reviews test results.  </li>
+<li><strong>Test Taker</strong> – Attempts assigned tests, views scores, and accesses personal result history.</li>
+</ul>
+<p>All actions and data are securely handled through a single centralized database, ensuring traceability and consistency across the system.</p>
+<hr />
+<h2 id="core-features">Core Features</h2>
+<ul>
+<li><strong>User &amp; Role Management</strong> – Controlled access managed by Admin; role-based permissions (Admin, Creator, Taker).  </li>
+<li><strong>Test Creation &amp; Editing</strong> – Test Creators can build, modify, and preview tests with multiple question types.  </li>
+<li><strong>Assignments</strong> – Tests can be selectively assigned to specific users or groups.  </li>
+<li><strong>Attempt Lifecycle</strong> – Test Takers can start and submit their test attempts.  </li>
+<li><strong>Automated Grading &amp; Reports</strong> – System automatically evaluates answers and generates results accessible to creators and admins.  </li>
+<li><strong>Secure Data Flow</strong> – Every operation (from login to submission) interacts with the centralized PostgreSQL database through secure APIs.  </li>
+<li><strong>Responsive PWA Interface</strong> – Optimized for both web and mobile usage in a controlled internal network.  </li>
+</ul>
+<hr />
+<h2 id="technology-stack">Technology Stack</h2>
+<ul>
+<li><strong>Frontend:</strong> React 19 (PWA) + Vite 7   </li>
+<li><strong>Backend:</strong> Node.js 24 (LTS) + Express 5 + Prisma ORM  </li>
+<li><strong>Database:</strong> PostgreSQL 17 (RDS – AWS)  </li>
+<li><strong>Authentication:</strong> JWT-based role control    </li>
+<li><strong>Infrastructure:</strong> AWS ( RDS, EC2)</li>
+</ul>
+<hr />
+<h2 id="system-objectives">System Objectives</h2>
+<ol>
+<li>To provide an internal, secure platform for test management and evaluation.  </li>
+<li>To ensure reliable user access control with distinct roles and permissions.  </li>
+<li>To automate test grading, result generation, and report delivery.  </li>
+<li>To maintain full data integrity through centralized database storage and controlled access.  </li>
+</ol>
+<hr />
+<h2 id="data-flow-summary">Data Flow Summary</h2>
+<ol>
+<li><strong>Admin</strong> manages users and assigns roles.<br></li>
+<li><strong>Test Creator</strong> creates and publishes tests.<br></li>
+<li><strong>Test Taker</strong> attempts assigned tests.<br></li>
+<li>All operations read/write to a single PostgreSQL database.<br></li>
+<li>Results are computed, stored, and presented securely.</li>
+</ol>
+<p><strong>SkillCheck</strong> aims to deliver a robust, maintainable, and secure testing ecosystem tailored for organizational use.</p>
 
 
 
