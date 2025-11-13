@@ -403,6 +403,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../test-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Test Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -492,277 +520,69 @@ This schema ensures data integrity, secure access control, and clear relationshi
 <p>This section lists all recommended <strong>database indexes</strong> for the SkillCheck platform along with their <strong>purpose</strong>.<br />
 Indexes are created in <strong>PostgreSQL</strong> to improve read performance, especially on large datasets where filtering, joining, and sorting are frequent operations.<br />
 All indexes below are designed to support <strong>core system queries</strong> while keeping write overhead minimal.  </p>
-<p><br></p>
-<h2 id="table-roles">Table: <code>roles</code></h2>
-<table>
-<thead>
-<tr>
-<th>Index Name</th>
-<th>Columns</th>
-<th>Type</th>
-<th>Purpose</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>roles_name_uq</code></td>
-<td><code>(name)</code></td>
-<td>UNIQUE</td>
-<td>Ensures that each role (Admin, Test Creator, Test Taker) has a unique name. Speeds up lookups by role name.</td>
-</tr>
-</tbody>
-</table>
-<p><br></p>
-<h2 id="table-users">Table: <code>users</code></h2>
-<table>
-<thead>
-<tr>
-<th>Index Name</th>
-<th>Columns</th>
-<th>Type</th>
-<th>Purpose</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>users_email_uq</code></td>
-<td><code>(email)</code></td>
-<td>UNIQUE</td>
-<td>Enforces unique email IDs for login and speeds up authentication queries.</td>
-</tr>
-<tr>
-<td><code>users_active_idx</code></td>
-<td><code>(id)</code> with <code>WHERE deleted_at IS NULL</code></td>
-<td>Partial</td>
-<td>Optimizes queries fetching active (non-deleted) users, reducing unnecessary scans.</td>
-</tr>
-</tbody>
-</table>
-<p><br></p>
-<h2 id="table-roles_users">Table: <code>roles_users</code></h2>
-<table>
-<thead>
-<tr>
-<th>Index Name</th>
-<th>Columns</th>
-<th>Type</th>
-<th>Purpose</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>roles_users_user_id_idx</code></td>
-<td><code>(user_id)</code></td>
-<td>Normal</td>
-<td>Speeds up queries fetching all roles assigned to a specific user.</td>
-</tr>
-<tr>
-<td><code>roles_users_role_id_idx</code></td>
-<td><code>(role_id)</code></td>
-<td>Normal</td>
-<td>Improves performance when listing users under a specific role.</td>
-</tr>
-<tr>
-<td><code>roles_users_role_user_uq</code></td>
-<td><code>(role_id, user_id)</code></td>
-<td>UNIQUE</td>
-<td>Prevents duplicate role-user assignments and improves composite lookups.</td>
-</tr>
-</tbody>
-</table>
-<p><br></p>
-<h2 id="table-tests">Table: <code>tests</code></h2>
-<table>
-<thead>
-<tr>
-<th>Index Name</th>
-<th>Columns</th>
-<th>Type</th>
-<th>Purpose</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>tests_created_by_idx</code></td>
-<td><code>(created_by)</code></td>
-<td>Normal</td>
-<td>Speeds up queries showing all tests created by a specific Test Creator.</td>
-</tr>
-<tr>
-<td><code>tests_status_created_at_idx</code></td>
-<td><code>(status, created_at)</code></td>
-<td>Normal</td>
-<td>Optimizes queries filtering tests by status and sorting by creation time.</td>
-</tr>
-<tr>
-<td><code>tests_title_trgm_idx</code></td>
-<td><code>(title)</code> using <code>pg_trgm</code></td>
-<td>GIN</td>
-<td>Enables fast text searches on test titles (for search/filter features).</td>
-</tr>
-</tbody>
-</table>
-<p><br></p>
-<h2 id="table-questions">Table: <code>questions</code></h2>
-<table>
-<thead>
-<tr>
-<th>Index Name</th>
-<th>Columns</th>
-<th>Type</th>
-<th>Purpose</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>questions_test_id_idx</code></td>
-<td><code>(test_id)</code></td>
-<td>Normal</td>
-<td>Essential for retrieving all questions belonging to a given test.</td>
-</tr>
-<tr>
-<td><code>questions_test_id_created_at_idx</code></td>
-<td><code>(test_id, created_at DESC)</code></td>
-<td>Composite</td>
-<td>Speeds up queries ordering questions by creation date within a test.</td>
-</tr>
-<tr>
-<td><code>questions_question_text_ft_idx</code></td>
-<td><code>to_tsvector('english', question_text)</code></td>
-<td>GIN</td>
-<td>Enables full-text search in question content for advanced search features.</td>
-</tr>
-</tbody>
-</table>
-<p><br></p>
-<h2 id="table-options">Table: <code>options</code></h2>
-<table>
-<thead>
-<tr>
-<th>Index Name</th>
-<th>Columns</th>
-<th>Type</th>
-<th>Purpose</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>options_question_id_idx</code></td>
-<td><code>(question_id)</code></td>
-<td>Normal</td>
-<td>Speeds up retrieval of options belonging to a particular question.</td>
-</tr>
-</tbody>
-</table>
-<p><br></p>
-<h2 id="table-test_assignments">Table: <code>test_assignments</code></h2>
-<table>
-<thead>
-<tr>
-<th>Index Name</th>
-<th>Columns</th>
-<th>Type</th>
-<th>Purpose</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>test_assignments_user_id_idx</code></td>
-<td><code>(user_id)</code></td>
-<td>Normal</td>
-<td>Optimizes queries listing all tests assigned to a specific user.</td>
-</tr>
-<tr>
-<td><code>test_assignments_test_id_idx</code></td>
-<td><code>(test_id)</code></td>
-<td>Normal</td>
-<td>Improves performance for listing all users assigned to a specific test.</td>
-</tr>
-<tr>
-<td><code>test_assignments_test_user_uq</code></td>
-<td><code>(test_id, user_id)</code></td>
-<td>UNIQUE</td>
-<td>Prevents duplicate assignments of the same test to the same user.</td>
-</tr>
-</tbody>
-</table>
-<p><br></p>
-<h2 id="table-test_attempts">Table: <code>test_attempts</code></h2>
-<table>
-<thead>
-<tr>
-<th>Index Name</th>
-<th>Columns</th>
-<th>Type</th>
-<th>Purpose</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>test_attempts_user_id_idx</code></td>
-<td><code>(user_id)</code></td>
-<td>Normal</td>
-<td>Accelerates fetching all attempts by a particular user.</td>
-</tr>
-<tr>
-<td><code>test_attempts_test_id_idx</code></td>
-<td><code>(test_id)</code></td>
-<td>Normal</td>
-<td>Optimizes queries checking all attempts for a specific test.</td>
-</tr>
-<tr>
-<td><code>test_attempts_user_started_at_idx</code></td>
-<td><code>(user_id, started_at)</code></td>
-<td>Composite</td>
-<td>Speeds up queries that fetch recent attempts by a user (e.g., dashboard views).</td>
-</tr>
-<tr>
-<td><code>test_attempts_active_idx</code></td>
-<td><code>(test_id)</code> with <code>WHERE ended_at IS NULL</code></td>
-<td>Partial</td>
-<td>Helps quickly find active/incomplete attempts for live test tracking.</td>
-</tr>
-</tbody>
-</table>
-<p><br></p>
-<h2 id="table-user_responses">Table: <code>user_responses</code></h2>
-<table>
-<thead>
-<tr>
-<th>Index Name</th>
-<th>Columns</th>
-<th>Type</th>
-<th>Purpose</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>user_responses_attempt_id_idx</code></td>
-<td><code>(attempt_id)</code></td>
-<td>Normal</td>
-<td>Improves retrieval of all responses within a single test attempt.</td>
-</tr>
-<tr>
-<td><code>user_responses_question_id_idx</code></td>
-<td><code>(question_id)</code></td>
-<td>Normal</td>
-<td>Speeds up performance when evaluating all answers for a given question.</td>
-</tr>
-<tr>
-<td><code>user_responses_user_attempt_question_idx</code></td>
-<td><code>(user_id, attempt_id, question_id)</code></td>
-<td>Composite</td>
-<td>Optimized for grading and checking user-specific responses during scoring.</td>
-</tr>
-<tr>
-<td><code>user_responses_attempt_q_opt_idx</code></td>
-<td><code>(attempt_id, question_id)</code> INCLUDE <code>(option_id, is_correct)</code></td>
-<td>Covering</td>
-<td>Helps in computing scores without reading full table rows, improving scoring performance.</td>
-</tr>
-</tbody>
-</table>
-<p><br></p>
+<h2 id="1-users-table">1. Users Table</h2>
+<h3 id="index-email"><strong>Index: email</strong></h3>
+<ul>
+<li><strong>Type:</strong> Unique Index  </li>
+<li><strong>Reason:</strong>  </li>
+<li>Used during login to quickly find a user by email.  </li>
+<li>Prevents duplicate email registrations.  </li>
+</ul>
+<h3 id="index-role_id"><strong>Index: role_id</strong></h3>
+<ul>
+<li><strong>Type:</strong> B-Tree Index  </li>
+<li><strong>Reason:</strong>  </li>
+<li>Makes filtering users by role faster (Admin pages, user management).  </li>
+</ul>
+<hr />
+<h2 id="2-tests-table">2. Tests Table</h2>
+<h3 id="index-created_by"><strong>Index: created_by</strong></h3>
+<ul>
+<li><strong>Type:</strong> B-Tree Index  </li>
+<li><strong>Reason:</strong>  </li>
+<li>Test Creators frequently list tests they have created.  </li>
+<li>Speeds up dashboard views for creators.  </li>
+</ul>
+<h3 id="index-status"><strong>Index: status</strong></h3>
+<ul>
+<li><strong>Type:</strong> B-Tree Index  </li>
+<li><strong>Reason:</strong>  </li>
+<li>System often filters tests by status: <code>draft</code>, <code>active</code>, <code>closed</code>.  </li>
+<li>Improves performance when listing only active/published tests.  </li>
+</ul>
+<hr />
+<h2 id="3-test-assignments-table">3. Test Assignments Table</h2>
+<h3 id="index-user_id"><strong>Index: user_id</strong></h3>
+<ul>
+<li><strong>Type:</strong> B-Tree Index  </li>
+<li><strong>Reason:</strong>  </li>
+<li>Required for showing Test Takers their assigned tests.  </li>
+<li>Improves dashboard loading for takers.  </li>
+</ul>
+<h3 id="index-test_id"><strong>Index: test_id</strong></h3>
+<ul>
+<li><strong>Type:</strong> B-Tree Index  </li>
+<li><strong>Reason:</strong>  </li>
+<li>Used by Admins/Creators to view which users are assigned to a test.  </li>
+</ul>
+<hr />
+<h2 id="4-attempts-table">4. Attempts Table</h2>
+<h3 id="index-assignment_id"><strong>Index: assignment_id</strong></h3>
+<ul>
+<li><strong>Type:</strong> B-Tree Index  </li>
+<li><strong>Reason:</strong>  </li>
+<li>When a user starts or resumes a test, the system checks their assignment.  </li>
+<li>Enables fast lookup of the correct attempt.  </li>
+</ul>
+<hr />
+<h2 id="5-responses-table">5. Responses Table</h2>
+<h3 id="composite-index-attempt_id-question_id"><strong>Composite Index: (attempt_id, question_id)</strong></h3>
+<ul>
+<li><strong>Type:</strong> Unique Composite Index  </li>
+<li><strong>Reason:</strong>  </li>
+<li>Ensures only one response per question per attempt (prevents duplicates).  </li>
+<li>Speeds up grading operations that join attempt → question.  </li>
+</ul>
 <hr />
 
 
