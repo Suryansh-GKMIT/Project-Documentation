@@ -12,6 +12,7 @@ nav:
       - System Architecture: requirements/system-architecture.md
       - Data Flow: requirements/dfd.md
       - Authentication and Authorization: requirements/sequence-auth2.md
+      - Test Plan: requirements/test-plan.md
       
 
 plugins:
