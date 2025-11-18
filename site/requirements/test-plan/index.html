@@ -9,10 +9,8 @@
       
       
       
-        <link rel="prev" href="../system-architecture/">
+        <link rel="prev" href="../sequence-auth2/">
       
-      
-        <link rel="next" href="../sequence-auth2/">
       
       
         
@@ -23,7 +21,7 @@
     
     
       
-        <title>Data Flow - SkillCheck Documentation</title>
+        <title>Test Plan - SkillCheck Documentation</title>
       
     
     
@@ -64,7 +62,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#data-flow-diagram-dfd" class="md-skip">
+        <a href="#testing-plan" class="md-skip">
           Skip to content
         </a>
       
@@ -100,7 +98,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Data Flow
+              Test Plan
             
           </span>
         </div>
@@ -341,19 +339,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../dfd/" class="md-nav__link">
         
   
   
@@ -369,7 +358,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -407,10 +395,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../test-plan/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Test Plan
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -426,6 +441,131 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-goals-of-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Goals of Testing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-types-of-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Types of Testing
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Types of Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#unit-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Unit Testing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integration-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Integration Testing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#end-to-end-testing-e2e" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        End-to-End Testing (E2E)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-test-execution-approach" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Test Execution Approach
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-what-will-be-delivered" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. What Will Be Delivered
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-coverage-goals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Coverage Goals
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -458,6 +598,119 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-goals-of-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Goals of Testing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-types-of-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Types of Testing
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Types of Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#unit-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Unit Testing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integration-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Integration Testing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#end-to-end-testing-e2e" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        End-to-End Testing (E2E)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-test-execution-approach" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Test Execution Approach
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-what-will-be-delivered" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. What Will Be Delivered
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-coverage-goals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Coverage Goals
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -473,11 +726,69 @@
 
 
 
-<h1 id="data-flow-diagram-dfd">Data Flow Diagram (DFD)</h1>
-<p>The Data Flow Diagram illustrates how data moves within the <strong>SkillCheck – Enclosed Access Online Test Platform</strong>.<br></p>
-<p>All actions ultimately interact with a single centralized <strong>database</strong>, which stores user, test, assignment, and result data.<br></p>
-<p><img alt="DFD0" src="../../images/dfd0.png" /></p>
-<p><img alt="DFD1" src="../../images/dfd1.png" /></p>
+<h1 id="testing-plan">Testing Plan</h1>
+<p>This Testing Plan outlines how the SkillCheck platform will be tested to ensure that the main features work correctly and reliably.<br />
+The goal is to keep testing simple while covering all important user flows of the MVP.</p>
+<hr />
+<h2 id="1-goals-of-testing">1. Goals of Testing</h2>
+<ul>
+<li>Make sure all core features behave as expected.  </li>
+<li>Validate the main actions performed by Admin, Test Creator, and Test Taker.  </li>
+<li>Catch basic functional issues early during development.  </li>
+<li>Ensure the platform works smoothly from start to finish.</li>
+</ul>
+<hr />
+<h2 id="2-types-of-testing">2. Types of Testing</h2>
+<h3 id="unit-testing"><strong>Unit Testing</strong></h3>
+<p>Tests small, individual pieces of logic.</p>
+<p><strong>Covers:</strong><br />
+- Login and role checks<br />
+- Creating tests<br />
+- Adding questions<br />
+- Starting and submitting attempts  </p>
+<hr />
+<h3 id="integration-testing"><strong>Integration Testing</strong></h3>
+<p>Tests how different parts of the system work together.</p>
+<p><strong>Examples:</strong><br />
+- Login → See dashboard<br />
+- Create test → Add questions → Publish<br />
+- Assign test → User sees assigned test<br />
+- Start attempt → Submit → Score saved  </p>
+<hr />
+<h3 id="end-to-end-testing-e2e"><strong>End-to-End Testing (E2E)</strong></h3>
+<p>Tests complete real-life user flows from the UI.</p>
+<p><strong>Examples:</strong><br />
+1. User logs in<br />
+2. Creator creates and assigns a test<br />
+3. Taker starts the test and submits<br />
+4. Results page loads correctly  </p>
+<hr />
+<h2 id="3-test-execution-approach">3. Test Execution Approach</h2>
+<ul>
+<li>Basic unit tests will be written for important logic.  </li>
+<li>Integration tests will check full flows between modules.  </li>
+<li>A few end-to-end tests will validate the major user journeys.  </li>
+<li>Tests will run automatically whenever code is pushed.</li>
+</ul>
+<hr />
+<h2 id="4-what-will-be-delivered">4. What Will Be Delivered</h2>
+<ul>
+<li>Simple backend tests for core logic (auth, test creation, assignment).  </li>
+<li>Simple frontend tests for forms and main screens.  </li>
+<li>One or more end-to-end flows covering the full journey.  </li>
+<li>Automatic test runs through CI.</li>
+</ul>
+<hr />
+<h2 id="5-coverage-goals">5. Coverage Goals</h2>
+<ul>
+<li>Focus on core and high-risk areas.  </li>
+<li>Every major use case should be covered by at least one test.  </li>
+<li>Aim for stable behavior, not full coverage numbers.</li>
+</ul>
+<hr />
+<h2 id="summary">Summary</h2>
+<p>This testing approach keeps things lightweight while ensuring the main features of the SkillCheck MVP work correctly.<br />
+More detailed testing can be added later as the platform grows.</p>
 
 
 
